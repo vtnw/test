@@ -9,7 +9,7 @@ var filesToCache = [
        'scripts/app.js',
        'styles/inline.css',
        'images/todo.png',
-       'images/icons/android-chrome-512×512.png'
+       'images/android-chrome-512×512.png'
 ]
 self.addEventListener('install', function (e) {
       console.log('[ServiceWorker] Install')
