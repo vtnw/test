@@ -1,1 +1,30 @@
-Hello
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE =edge">
+    <meta name="viewport" content="width =device-width, initial-scale=1.0″>
+    <title>Todo list</title>
+    <link rel="stylesheet" type="text/css" href="styles/inline.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="./images/chrome-touch-icon-192x192.png" sizes="192x192" type="image/png">
+    <link rel="icon" href="/images/chrome-touch-icon-384x384.png" sizes="384x384" type="image/png">
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title">
+            Todo list
+        </h1>
+    </header>
+    <main class="main">
+        <div>
+            <input type="text" id="tbText" />
+            <input type="button" value="Add Task" id="btnAdd" onclick="add();" />
+        </div>
+        <div id="dvContent">
+
+        </div>
+    </main>
+    <script src="scripts/app.js" async></script>
+</body>
+</html>
