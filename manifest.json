@@ -1,6 +1,6 @@
 {
-  "short_name": "To Do 1.2",
-  "name": "To Do List",
+  "short_name": "Translate",
+  "name": "Translate 1.0",
   "start_url": "./?utm_source=web_app_manifest",
   "icons": [
     {
@@ -14,8 +14,8 @@
       "type": "image/png"
     }
   ],
-  "background_color": "#FAFAFA",
-  "theme_color": "#4527A0",
+  "background_color": "blue",
+  "theme_color": "green",
   "display": "standalone",
   "orientation": "portrait"
 }
