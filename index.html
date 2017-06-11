@@ -17,13 +17,13 @@
         </h1>
     </header>
     <main class="main">
-        <div>
-            <input type="text" id="tbText" />
-            <input type="button" value="Add Task" id="btnAdd" onclick="add();" />
-        </div>
-        <div id="dvContent">
-
-        </div>
+        <select id="ddlLang">
+		<option selected="true" value="ta">Tamil</option>
+		<option value="hi">Hindi</option>
+	</select><br>
+	<textarea id="tbSource"></textarea><br>
+ 	<input type="button" id="btnTranslate" value="Translate"><br>
+ 	<textarea id="tbTarget"></textarea>
     </main>
     <script src="scripts/app.js" async></script>
 </body>
