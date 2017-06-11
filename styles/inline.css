@@ -2,6 +2,7 @@ textarea{
 	width:80%;
 	height:30%;
 	position:absolute;
+	border:1px solid black;
 }
 .dvTarget{
 	width:80%;
