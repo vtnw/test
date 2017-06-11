@@ -1,3 +1,4 @@
+
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
             .register('./sw.js')
@@ -8,6 +9,10 @@ if ('serviceWorker' in navigator) {
 
 	var xhr;
   	document.getElementById("btnTranslate").onclick = function(event) {
+  		if (!navigator.onLine){
+  			showStatus('Could not connect to internet :(')
+  			return;
+  		}
   		showStatus('Processing...')
   		var source = document.getElementById("tbSource").value;
   		var lang = document.getElementById("ddlLang").options[document.getElementById("ddlLang").selectedIndex].value;
