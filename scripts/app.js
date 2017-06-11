@@ -27,7 +27,7 @@ if ('serviceWorker' in navigator) {
  	}
 
 function showStatus(msg){
-	document.getElementById("tbStatus").value = msg;
+	document.getElementById("spnStatus").innerText = msg;
 }
 	
 	
