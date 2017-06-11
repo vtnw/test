@@ -10,7 +10,7 @@ if ('serviceWorker' in navigator) {
   	document.getElementById("btnTranslate").onclick = function(event) {
   		var source = document.getElementById("tbSource").value;
   		var lang = document.getElementById("ddlLang").options[document.getElementById("ddlLang").selectedIndex].value;
-  		alert(source);alert(lang);
+  		
 	 	xhr = new XMLHttpRequest();
  		var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=" + lang + "&dt=t&q=" + source;
  		xhr.open('GET', url, true);
@@ -25,3 +25,11 @@ if ('serviceWorker' in navigator) {
  			document.getElementById("tbTarget").value = response[0][0][0];
  		}
  	}
+
+function showStatus(msg){
+	document.getElementById("tbStatus").value = msg;
+}
+	
+	
+
+
