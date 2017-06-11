@@ -8,7 +8,7 @@ var filesToCache = [
        'offline.html',
        'scripts/app.js',
        'styles/inline.css',
-       'images/todo.png',
+       'images/icon.png',
        'images/android-chrome-512×512.png'
 ]
 self.addEventListener('install', function (e) {
