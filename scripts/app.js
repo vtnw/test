@@ -23,7 +23,7 @@ if ('serviceWorker' in navigator) {
  	function processRequest(e) {
  		if (xhr.readyState == 4 && xhr.status == 200) {
  			var response = JSON.parse(xhr.responseText);
- 			document.getElementById("tbTarget").value = response[0][0][0];
+ 			document.getElementById("dvTarget").innerHTML = response[0][0][0];
  			showStatus('')
  		}
  	}
