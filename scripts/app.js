@@ -8,6 +8,7 @@ if ('serviceWorker' in navigator) {
 
 	var xhr;
   	document.getElementById("btnTranslate").onclick = function(event) {
+  		showStatus('Processing...')
   		var source = document.getElementById("tbSource").value;
   		var lang = document.getElementById("ddlLang").options[document.getElementById("ddlLang").selectedIndex].value;
   		
@@ -23,13 +24,10 @@ if ('serviceWorker' in navigator) {
  		if (xhr.readyState == 4 && xhr.status == 200) {
  			var response = JSON.parse(xhr.responseText);
  			document.getElementById("tbTarget").value = response[0][0][0];
+ 					showStatus('')
  		}
  	}
 
 function showStatus(msg){
 	document.getElementById("spnStatus").innerText = msg;
 }
-	
-	
-
-
