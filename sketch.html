@@ -27,8 +27,7 @@
             context.strokeStyle = "black";
             context.lineJoin = "round";
             context.lineWidth = 3;
-            context.canvas.width  = window.innerWidth;
-            context.canvas.height = window.innerHeight
+            
             for (var i = 0; i < clickX.length; i++) {
                 context.beginPath();
                 if (clickDrag[i] && i) {
@@ -44,6 +43,8 @@
         window.onload = initialize();
         function initialize() {
             context = document.getElementById('canvas').getContext("2d");
+            context.canvas.width  = window.innerWidth*90/100;
+            context.canvas.height = window.innerHeight*80/100;
             document.getElementById('canvas').onmousedown = function (e) {
                 var mouseX = e.pageX - this.offsetLeft;
                 var mouseY = e.pageY - this.offsetTop;
