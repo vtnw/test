@@ -8,7 +8,7 @@
     <script type="text/javascript"></script>
 </head>
 <body>
-    <canvas id="canvas" width="375" height="450" style="border:1px solid red;"></canvas>
+    <canvas id="canvas" width="375" height="450" style="border:1px solid blue;"></canvas>
     <input type="button" id="btnClear" value="Clear" />
     <input type="button" id="btnSave" value="Save" />
     <script type="text/javascript">
@@ -108,7 +108,7 @@
             }
             document.getElementById('btnSave').onclick = function (e) {
                 //var image_data = document.getElementById('canvas').toDataURL("image/png");
-                var image_data = context.canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+                var image_data = context.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
                 window.open(image_data);
             }
 
