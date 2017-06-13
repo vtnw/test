@@ -8,7 +8,7 @@
     <script type="text/javascript"></script>
 </head>
 <body>
-    <canvas id="canvas" width="375" height="450" style="border:1px solid red;"></canvas>
+    <canvas id="canvas" width="375" height="450" style="border:1px solid blue;"></canvas>
     <input type="button" id="btnClear" value="Clear" />
     <input type="button" id="btnSave" value="Save" />
     <script type="text/javascript">
@@ -103,7 +103,7 @@
                 }
             }, { passive: false });
             document.getElementById('btnClear').onclick = function (e) {
-                canvas.width = canvas.width;
+                document.getElementById('canvas').width = document.getElementById('canvas').width;
             }
             document.getElementById('btnSave').onclick = function (e) {
                 var image_data = document.getElementById('canvas').toDataURL("image/png");
