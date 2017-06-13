@@ -8,7 +8,7 @@
     <script type="text/javascript"></script>
 </head>
 <body>
-    <canvas id="canvas" width="375" height="450" style="border:1px solid yellow;"></canvas>
+    <canvas id="canvas" width="375" height="450" style="border:1px solid blue;"></canvas>
     <input type="button" id="btnClear" value="Clear" />
     <input type="button" id="btnSave" value="Save" />
     <script type="text/javascript">
@@ -27,8 +27,6 @@
             context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
 
             context.strokeStyle = "blue";
-            context.canvas.style.opacity = '0.2';
-            context.canvas.style.backgroundColor= "red";
             context.lineJoin = "round";
             context.lineWidth = 3;
 
