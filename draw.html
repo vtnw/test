@@ -104,11 +104,11 @@
             }, { passive: false });
             document.getElementById('btnClear').onclick = function (e) {
                 //document.getElementById('canvas').width = document.getElementById('canvas').width;
-                context.clearRect(0, 0, document.getElementById('canvas').width, document.getElementById('canvas').height);                                   
+                context.clearRect(0, 0, context.canvas.width, context.canvas.height);                                   
             }
             document.getElementById('btnSave').onclick = function (e) {
-                var image_data = document.getElementById('canvas').toDataURL("image/jpeg");
-                var image_data = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+                //var image_data = document.getElementById('canvas').toDataURL("image/png");
+                var image_data = context.canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
                 window.open(image_data);
             }
 
