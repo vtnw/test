@@ -61,9 +61,39 @@
             document.getElementById('canvas').onmouseup = function (e) {
                 paint = false;
             };
-            document.getElementById('canvas').onmouseleave =function (e) {
+            document.getElementById('canvas').onmouseleave = function (e) {
                 paint = false;
             };
+            document.getElementById('canvas').addEventListener("touchstart", function (e) {
+                mousePos = getTouchPos(document.getElementById('canvas'), e);
+                var touch = e.touches[0];
+                var mouseEvent = new MouseEvent("mousedown", {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                document.getElementById('canvas').dispatchEvent(mouseEvent);
+            }, false);
+            document.getElementById('canvas').addEventListener("touchend", function (e) {
+                var mouseEvent = new MouseEvent("mouseup", {});
+                document.getElementById('canvas').dispatchEvent(mouseEvent);
+            }, false);
+            document.getElementById('canvas').addEventListener("touchmove", function (e) {
+                var touch = e.touches[0];
+                var mouseEvent = new MouseEvent("mousemove", {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                document.getElementById('canvas').dispatchEvent(mouseEvent);
+            }, false);
+
+            // Get the position of a touch relative to the canvas
+            function getTouchPos(canvasDom, touchEvent) {
+                var rect = canvasDom.getBoundingClientRect();
+                return {
+                    x: touchEvent.touches[0].clientX - rect.left,
+                    y: touchEvent.touches[0].clientY - rect.top
+                };
+            }
         }
     </script>
 </body>
