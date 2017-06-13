@@ -106,7 +106,7 @@
                                             
             document.getElementById('btnSave').onclick = function (e) {
                 context.globalCompositeOperation = "destination-over";
-                context.fillStyle = 'red'; 
+                context.fillStyle = 'white'; 
                 context.fillRect(0,0,context.canvas.width,context.canvas.height);
                 var image_data = document.getElementById('canvas').toDataURL("image/png");
                 
