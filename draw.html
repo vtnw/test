@@ -8,7 +8,7 @@
     <script type="text/javascript"></script>
 </head>
 <body>
-    <canvas id="canvas" width="375" height="450" style="border:1px solid blue;"></canvas>
+    <canvas id="canvas" width="375" height="450" style="border:1px solid green;"></canvas>
     <input type="button" id="btnClear" value="Clear" />
     <input type="button" id="btnSave" value="Save" />
     <script type="text/javascript">
@@ -103,11 +103,12 @@
                 }
             }, { passive: false });
             document.getElementById('btnClear').onclick = function (e) {
-                document.getElementById('canvas').width = document.getElementById('canvas').width;
+                //document.getElementById('canvas').width = document.getElementById('canvas').width;
+                context.clearRect(0, 0, canvas.width, canvas.height);                                   
             }
             document.getElementById('btnSave').onclick = function (e) {
                 var image_data = document.getElementById('canvas').toDataURL("image/png");
-                //var image_data = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+                var image_data = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
                 window.open(image_data);
             }
 
