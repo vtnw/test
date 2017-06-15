@@ -31,9 +31,9 @@ if ('serviceWorker' in navigator) {
  			document.getElementById("dvTarget").innerHTML = response[0][0][0];
  			showStatus('njk');
 			alert(navigator.serviceWorker);
-			navigator.serviceWorker.onready =function(registration) {
+			navigator.serviceWorker.ready.then(function(registration) {
 				alert(registration);
-      //registration.showNotification('Notification with ServiceWorker');
+      registration.showNotification('Notification with ServiceWorker');
     };
  		}
  	}
