@@ -2,8 +2,14 @@
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
             .register('./sw.js')
-            .then(function() 
-            { console.log('Service Worker Registered'); 
+            .then(function(registration) 
+            { 
+		    console.log('Service Worker Registered'); 
+		    var title = 'Simple Title';
+		    var options = {
+		      body: 'Simple piece of body text.\nSecond line of body text :)'
+		    };
+		    registration.showNotification(title, options);
             });
 }
 
