@@ -2,14 +2,9 @@
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
             .register('./sw.js')
-            .then(function(registration) 
+            .then(function() 
             { 
-		    console.log('Service Worker Registered'); 
-		    var title = 'Simple Title';
-		    var options = {
-		      body: 'Simple piece of body text.\nSecond line of body text :)'
-		    };
-		    registration.showNotification(title, options);
+		    console.log('Service Worker Registered');
             });
 }
 
@@ -35,14 +30,7 @@ if ('serviceWorker' in navigator) {
  		if (xhr.readyState == 4 && xhr.status == 200) {
  			var response = JSON.parse(xhr.responseText);
  			document.getElementById("dvTarget").innerHTML = response[0][0][0];
- 			showStatus('njk1');
-			Notification.requestPermission(function(result) {
-			  if (result === 'granted') {
-			    navigator.serviceWorker.ready.then(function(registration) {
-			      registration.showNotification('Notification with ServiceWorker');
-			    });
-			  }
-			});
+ 			showStatus('');
  		}
  	}
 
