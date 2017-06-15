@@ -29,12 +29,12 @@ if ('serviceWorker' in navigator) {
  		if (xhr.readyState == 4 && xhr.status == 200) {
  			var response = JSON.parse(xhr.responseText);
  			document.getElementById("dvTarget").innerHTML = response[0][0][0];
- 			showStatus('gjk');
+ 			showStatus('njk');
 			alert(navigator.serviceWorker);
-			navigator.serviceWorker.ready.then(function(registration) {
+			navigator.serviceWorker.onready =function(registration) {
 				alert(registration);
       //registration.showNotification('Notification with ServiceWorker');
-    });
+    };
  		}
  	}
 
