@@ -29,7 +29,7 @@ if ('serviceWorker' in navigator) {
  		if (xhr.readyState == 4 && xhr.status == 200) {
  			var response = JSON.parse(xhr.responseText);
  			document.getElementById("dvTarget").innerHTML = response[0][0][0];
- 			showStatus('h')
+ 			showStatus('g');
 			showNotification();
  		}
  	}
@@ -41,12 +41,11 @@ function showNotification() {
   Notification.requestPermission(function(result) {
     if (result === 'granted') {
       navigator.serviceWorker.ready.then(function(registration) {
-        registration.showNotification('Vibration Sample', {
-          body: 'Buzz! Buzz!',
-          icon: '../images/touch/chrome-touch-icon-192x192.png',
-          vibrate: [200, 100, 200, 100, 200, 100, 200],
-          tag: 'vibration-sample'
-        });
+        var title = 'Simple Title';
+    var options = {
+      body: 'Simple piece of body text.\nSecond line of body text :)'
+    };
+    registration.showNotification(title, options);
       });
     }
   });
