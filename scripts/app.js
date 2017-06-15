@@ -38,13 +38,14 @@ function showStatus(msg){
 	document.getElementById("spnStatus").innerHTML = msg;
 }
 function showNotification() {
-	
+	alert(navigator.serviceWorker);
   Notification.requestPermission(function(result) {
 	  showStatus(result + v);
     if (result === 'granted') {
-	
+	alert(navigator.serviceWorker);
       navigator.serviceWorker.ready.then(function(registration) {
-        var title = 'Simple Title';
+        alert(registration);
+	ar title = 'Simple Title';
     var options = {
       body: 'Simple piece of body text.\nSecond line of body text :)'
     };
