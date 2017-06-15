@@ -15,6 +15,7 @@ if ('serviceWorker' in navigator) {
   			return;
   		}
   		showStatus('Processing...')
+		showNotification();
   		var source = document.getElementById("tbSource").value;
   		var lang = document.getElementById("ddlLang").options[document.getElementById("ddlLang").selectedIndex].value;
   		
@@ -38,3 +39,12 @@ function showStatus(msg){
 	document.getElementById("spnStatus").innerHTML = msg;
 }
 
+function showNotification() {
+  Notification.requestPermission(function(result) {
+    if (result === 'granted') {
+      navigator.serviceWorker.ready.then(function(registration) {
+        registration.showNotification('hi');
+      });
+    }
+  });
+}
