@@ -42,5 +42,14 @@ function showStatus(msg){
 function showNotification() {
 	Notification.requestPermission().then(function(result) {
   		console.log(result);
+		if (result === 'granted') {
+			console.log('inside');
+		      navigator.serviceWorker.ready.then(function(registration) {
+			      console.log('almost');
+			      console.log(registration);
+			registration.showNotification('hi');
+			      console.log('done');
+		      });
+		    }
 	});
 }
