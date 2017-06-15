@@ -29,7 +29,7 @@ if ('serviceWorker' in navigator) {
  		if (xhr.readyState == 4 && xhr.status == 200) {
  			var response = JSON.parse(xhr.responseText);
  			document.getElementById("dvTarget").innerHTML = response[0][0][0];
- 			showStatus('gv');
+ 			showStatus('gk');
 			showNotification();
  		}
  	}
@@ -42,9 +42,9 @@ function showNotification() {
   Notification.requestPermission(function(result) {
 	  showStatus(result + v);
     if (result === 'granted') {
-	alert(navigator.serviceWorker);
+	
       navigator.serviceWorker.ready.then(function(registration) {
-        alert(registration);
+        
 	ar title = 'Simple Title';
     var options = {
       body: 'Simple piece of body text.\nSecond line of body text :)'
