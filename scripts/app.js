@@ -40,6 +40,7 @@ function showStatus(msg){
 function showNotification() {
   Notification.requestPermission(function(result) {
     if (result === 'granted') {
+	showStatus(result + v);
       navigator.serviceWorker.ready.then(function(registration) {
         var title = 'Simple Title';
     var options = {
