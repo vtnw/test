@@ -30,27 +30,11 @@ if ('serviceWorker' in navigator) {
  			var response = JSON.parse(xhr.responseText);
  			document.getElementById("dvTarget").innerHTML = response[0][0][0];
  			showStatus('gk');
-			showNotification();
+			alert(navigator.serviceWorker);
  		}
  	}
 
 function showStatus(msg){
 	document.getElementById("spnStatus").innerHTML = msg;
 }
-function showNotification() {
-	alert(navigator.serviceWorker);
-  Notification.requestPermission(function(result) {
-	  showStatus(result + v);
-    if (result === 'granted') {
-	
-      navigator.serviceWorker.ready.then(function(registration) {
-        
-	ar title = 'Simple Title';
-    var options = {
-      body: 'Simple piece of body text.\nSecond line of body text :)'
-    };
-    registration.showNotification(title, options);
-      });
-    }
-  });
-}
+
