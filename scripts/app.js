@@ -29,11 +29,15 @@ if ('serviceWorker' in navigator) {
  		if (xhr.readyState == 4 && xhr.status == 200) {
  			var response = JSON.parse(xhr.responseText);
  			document.getElementById("dvTarget").innerHTML = response[0][0][0];
- 			showStatus('d')
-			navigator.serviceWorker.ready.then(function(registration) {
-                             registration.showNotification('Notification with ServiceWorker');
-				showStatus('k')
-                        });
+ 			showStatus('l')
+			Notification.requestPermission(function(result) {
+  if (result === 'granted') {
+    navigator.serviceWorker.ready.then(function(registration) {
+	    showStatus('m')
+      registration.showNotification('Notification with ServiceWorker');
+    });
+  }
+});
  		}
  	}
 
