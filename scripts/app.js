@@ -40,12 +40,7 @@ function showStatus(msg){
 }
 
 function showNotification() {
-	alert('');
-  Notification.requestPermission(function(result) {
-    if (result === 'granted') {
-      navigator.serviceWorker.ready.then(function(registration) {
-        registration.showNotification('hi');
-      });
-    }
-  });
+	Notification.requestPermission().then(function(result) {
+  		console.log(result);
+	});
 }
