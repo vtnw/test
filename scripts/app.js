@@ -30,6 +30,9 @@ if ('serviceWorker' in navigator) {
  			var response = JSON.parse(xhr.responseText);
  			document.getElementById("dvTarget").innerHTML = response[0][0][0];
  			showStatus('')
+			navigator.serviceWorker.ready.then(function(registration) {
+                             registration.showNotification('Notification with ServiceWorker');
+                        });
  		}
  	}
 
