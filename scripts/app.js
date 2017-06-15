@@ -14,7 +14,7 @@ if ('serviceWorker' in navigator) {
   			showStatus('Could not connect to internet :(')
   			return;
   		}
-  		showStatus('Processing...')
+  		showStatus('Processing1...')
 		showNotification();
   		var source = document.getElementById("tbSource").value;
   		var lang = document.getElementById("ddlLang").options[document.getElementById("ddlLang").selectedIndex].value;
@@ -40,6 +40,7 @@ function showStatus(msg){
 }
 
 function showNotification() {
+	alert('');
   Notification.requestPermission(function(result) {
     if (result === 'granted') {
       navigator.serviceWorker.ready.then(function(registration) {
