@@ -1,6 +1,6 @@
 // Cache names
-var dataCacheName = 'TODOData-v1.1.4'
-var cacheName = 'todoPWA-1.5'
+var dataCacheName = 'TODOData-v1.1.5'
+var cacheName = 'todoPWA-1.6'
 // Application shell files to be cached
 var filesToCache = [
        '/',
@@ -8,8 +8,7 @@ var filesToCache = [
        'offline.html',
        'scripts/app.js',
        'styles/inline.css',
-       'images/icon.png',
-       'images/android-chrome-512×512.png'
+       'images/icon.png'
 ]
 self.addEventListener('install', function (e) {
       console.log('[ServiceWorker] Install')
