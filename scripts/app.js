@@ -37,3 +37,4 @@ if ('serviceWorker' in navigator) {
 
 function showStatus(msg){
 	document.getElementById("spnStatus").innerHTML = msg;
+}
