@@ -12,10 +12,14 @@
     <header class="header">
         Push3
     </header>
-    <input type="button" value="Click" onclick="setTimeout(go, 3000);"></input>
+    <input type="text" id="tb"/>
+    <input type="button" value="Click" onclick="set();"></input>
     <script type="text/javascript">
     navigator.serviceWorker.register('sw1.js');
-    
+    function set(){
+       var min = parseInt(document.getElementById("tb").value);
+       setTimeout(go, min * 60 * 1000);
+    }
     function go()
     {
         showNotification();
