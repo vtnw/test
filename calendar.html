@@ -54,6 +54,7 @@
 		if (typeof this.hourwake!="undefined"){ //if alarm is set
 			if (this.ctref.title==(this.hourwake+":"+this.minutewake+":"+this.secondwake)){
 				clearInterval(jsalarm.timer)
+					showNotification()					    
 				window.location=document.getElementById("musicloc").value
 			}
 		}
