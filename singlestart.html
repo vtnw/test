@@ -1,18 +1,13 @@
 <!DOCTYPE html>
-<html manifest="link.appcache">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE =edge">
     <meta name="viewport" content="width =device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="images/icon2.png" />
     <style>
     ::-webkit-scrollbar { 
             display: none; 
         }
         input {
             margin-bottom: 5px;
-            border-radius:25px;
-            
+            border-radius:25px;            
             outline: none;
             padding: 5px;
             font-size: 14px;
@@ -21,158 +16,27 @@
             border:1px solid #cccccc;
             padding: 5px 10px 5px 10px;
         }
-        textarea {
-            width:94%;
-            height:100px;
-            border:1px solid #cccccc;
-            border-radius:25px;
-            outline: none;
-            padding: 10px;
-            font-size: 14px;
-        }
         input[type=button] {
              border: none;
-        }
-        .btnAdd {
-             width:30px;
-        }
-        .tbLink {
-             width:94%;
         }
     </style>
     <title>Links</title>
 </head>
-<body onload="loadLinks();">
+<body>
     <div>
-        <input type="button" value="Add" id="btnShowAdd" />
-        <input type="button" value="Edit" id="btnEdit" />
-        <input type="button" value="Clear" id="btnClear" />
     </div>
     <div id="dvLinkAdd" style="display:none;">
-        <input type="text" value="" id="tbName" placeholder="name" />
-        <input type="button" value="+" class="btnAdd" id="btnAdd" /><br />
-        <input type="text" value="" placeholder="group" id="tbType" />
-        <input type="url" value="" id="tbLink" placeholder="url" class="tbLink" />
+        <input type="url" value="" id="tbLink" placeholder="url" class="tbLink" />        
+        <input type="button" value="Browse" id="btnBrowse" />
+        <input type="button" value="Search" id="btnSearch" />
     </div>
-    <div id="dvEdit" style="display:none" ;>
-        <textarea id="tbData"></textarea>
-    </div>
-    <div id="dvLinks"></div>
     <script lang="javascript">
-    var cacheName = "link" + decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent("u").replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
-var showType = true;
-
-document.getElementById("btnEdit").addEventListener("click", function () {
-    if (document.getElementById("dvEdit").style.display == "none") {
-        document.getElementById("btnEdit").value = "Save";
-        document.getElementById("tbData").value = localStorage.getItem(cacheName);
-        document.getElementById("dvEdit").style.display = "block";
-    } else {
-        localStorage.setItem(cacheName, document.getElementById("tbData").value);
-        document.getElementById("tbData").value = "";
-        document.getElementById("dvEdit").style.display = "none";
-        document.getElementById("btnEdit").value = "Edit";
-        loadLinks();
-    }
-
-});
-document.getElementById("btnAdd").addEventListener("click", function () {
-    var n = document.getElementById("tbName").value;
-    var l = document.getElementById("tbLink").value;
-    var t = document.getElementById("tbType").value;
-    if (n != '' && l != '' && t != '') {
-        var item = { "name": n, "link": l, "type": t };
-        var items = getCache();
-        items.push(item);
-        setCache(items);
-        loadLinks();
-        document.getElementById("tbName").value = "";
-        document.getElementById("tbLink").value = "";
-        document.getElementById("tbType").value = "";
-    }
-});
-document.getElementById("btnClear").addEventListener("click", function () {
-    if (confirm("Clear?")) {
-        clearDiv();
-        localStorage.setItem(cacheName, null);
-    }
-});
-document.getElementById("btnShowAdd").addEventListener("click", function () {
-    if (document.getElementById("dvLinkAdd").style.display == "none") {
-        document.getElementById("dvLinkAdd").style.display = "block";
-        document.getElementById("btnShowAdd").value = "Close";
-    } else {
-        document.getElementById("dvLinkAdd").style.display = "none";
-        document.getElementById("btnShowAdd").value = "Add";
-    }
-});
-
-function loadLinks() {
-    var items = getCache();
-    if (showType) {
-        items.sort(function (a, b) {
-            if (a.type === b.type) {
-                return a.name.localeCompare(b.name);
-            } else if (a.type > b.type) {
-                return 1;
-            } else if (a.type < b.type) {
-                return -1;
-            }
+        document.getElementById("btnBrowse").addEventListener("click", function () {            
+            location.href = "http://" + document.getElementById("tbLink").value;
         });
-    } else {
-        items.sort(function (a, b) { return a.name > b.name });
-    }
-    clearDiv();
-    var d = document.getElementById("dvLinks");
-    var currType = "";
-    /*
-    for (var i = 0; i < items.length; i++) {
-        if (currType != items[i].type && showType) {
-            currType = items[i].type;
-            var a = document.createElement('a');
-            a.setAttribute("href", "#" + currType);
-            a.setAttribute("name", "type");
-            a.setAttribute("style", "line-height:30px;");
-            a.innerHTML = currType;
-            d.appendChild(a);
-            d.appendChild(document.createElement('br'));
-        }                
-    }
-    */
-    currType = "";
-    for (var i = 0; i < items.length; i++) {
-        if (currType != items[i].type && showType) {
-            currType = items[i].type;
-            var a = document.createElement('a');
-            a.setAttribute("name", items[i].type);
-            a.setAttribute("href", "#type");
-            a.setAttribute("style", "line-height:30px;color:#aaaaaa;font-style:italic;text-decoration:none;");
-            a.innerHTML = currType;
-            d.appendChild(document.createElement('hr'));
-            d.appendChild(a);
-            d.appendChild(document.createElement('br'));
-        }                
-        var a = document.createElement('a');
-        a.setAttribute("href", items[i].link);
-        a.setAttribute("style", "line-height:30px;display:inline-block;margin-right:10px;");
-        a.innerHTML = items[i].name;
-        d.appendChild(a);
-        //d.appendChild(document.createElement('br'));
-    }
-}
-function getCache() {
-    var items = JSON.parse(localStorage.getItem(cacheName));
-    if (items == null) {
-        items = [];
-    }
-    return items;
-}
-function setCache(items) {
-    localStorage.setItem(cacheName, JSON.stringify(items));
-}
-function clearDiv() {
-    document.getElementById("dvLinks").innerHTML = "";
-}
+        document.getElementById("btnSearch").addEventListener("click", function () {            
+            location.href = "https://www.google.co.in/search?q=" + document.getElementById("tbLink").value;
+        });
     </script>
 </body>
 </html>
