@@ -5,41 +5,34 @@
     ::-webkit-scrollbar { 
             display: none; 
         }
-        input {
-            margin-bottom: 5px;
-            border-radius:25px;            
-            outline: none;
-            padding: 5px;
-            font-size: 14px;
-        }
         input[type=url] {
             border:1px solid #cccccc;
             padding: 5px 10px 5px 10px;
-            width: 95%
-        }
-        input[type=button] {
-             border: none;
-             padding: 10px;
+            width: 99%;
+            margin-bottom: 5px;
+            border-radius:25px;            
+            outline: none;
+            font-size: 14px;
         }
     </style>
-    <title>Links</title>
+    <title>Search</title>
 </head>
 <body>
-    <div style="height:300px;">
-    </div>
     <div>
         <input type="url" value="" id="tbLink" placeholder="url" />
     </div>
-    <div>
-        <input type="button" value="Browse" id="btnBrowse" />
-        <input type="button" value="Search" id="btnSearch" />
-    </div>
     <script lang="javascript">
-        document.getElementById("btnBrowse").addEventListener("click", function () {            
-            location.href = "http://" + document.getElementById("tbLink").value;
-        });
-        document.getElementById("btnSearch").addEventListener("click", function () {            
-            location.href = "https://www.google.co.in/search?q=" + document.getElementById("tbLink").value;
+        document.getElementById("tbLink").addEventListener("keyup", function () {            
+             if (event.key === "Enter") {
+                var prefix = '';
+                if(url.indexOf(' ') >= 0 || url.indexOf('.') < 0){
+                    prefix = "https://www.google.co.in/search?q=";
+                }
+                else{
+                    prefix = "http://";
+                }
+                location.href = prefix + document.getElementById("tbLink").value;
+             }
         });
     </script>
 </body>
