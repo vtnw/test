@@ -16,7 +16,7 @@
     </style>
     <title>Search</title>
 </head>
-<body>
+<body onclick="javascript:document.getElementById('tbLink').focus();">
     <div>
         <input type="url" value="" id="tbLink" placeholder="url" />
     </div>
@@ -24,13 +24,16 @@
         document.getElementById("tbLink").addEventListener("keypress", function () {            
              if (event.key === "Enter") {
                 var prefix = '';
+                var url = document.getElementById("tbLink").value;
                 if(url.indexOf(' ') >= 0 || url.indexOf('.') < 0){
                     prefix = "https://www.google.co.in/search?q=";
                 }
                 else{
-                    prefix = "http://";
+                    if (url.indexOf('http://') < 0 && url.indexOf('https://') < 0){
+                        prefix = "http://";
+                    }
                 }
-                location.href = prefix + document.getElementById("tbLink").value;
+                location.href = prefix + url;
              }
         });
     </script>
