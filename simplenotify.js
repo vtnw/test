@@ -1,6 +1,8 @@
 function show(){
-  var registration = navigator.serviceWorker.register('service-worker.js');
-  const title = 'Web Push Book';
+  alert('hi3');
+  return registerServiceWorker()
+    .then(function(registration) {
+    const title = 'Web Push Book';
     const options = {
       body: 'This would be the body text of the notification.\n' +
         'It can hold two lines of text.',
@@ -17,5 +19,16 @@ function show(){
       ]
     };
     registration.showNotification(title, options);
-  alert('hi2');
+  });
 }
+
+function registerServiceWorker() {
+    return navigator.serviceWorker.register('service-worker.js')
+    .then(function(registration) {
+      console.log('Service worker successfully registered.');
+      return registration;
+    })
+    .catch(function(err) {
+      console.error('Unable to register service worker.', err);
+    });
+  }
