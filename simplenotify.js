@@ -1,5 +1,5 @@
 function show(){
-  alert('hi3');
+  alert('hi4');
   return registerServiceWorker()
     .then(function(registration) {
     const title = 'Web Push Book';
